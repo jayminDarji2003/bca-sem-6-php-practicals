@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        body {
+            background-color: gray;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: rgb(225, 143, 143);
+            border-radius: 50px;
+        }
+        .register_form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-direction: column;
+        }
+        .container div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            justify-content: center;
+        }
+        .container label {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .container input {
+            padding: 10px;
+            font-size: 15px;
+            border-radius: 10px;
+            border: none;
+        }
+        .btn {
+            padding: 5px;
+            cursor: pointer;
+            background: #000;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Register form</h1>
+    <div class="container">
+        <form action="register.php" class="register_form" method="post">
+            <div>
+                <label for="name">Enter your name : </label>
+                <input type="text" name="name" placeholder="enter name">
+            </div>
+            <div>
+                <label for="email">Enter your email : </label>
+                <input type="email" name="email" placeholder="enter email">
+            </div>
+            <div>
+                <label for="password">Enter password : </label>
+                <input type="password" name="password" placeholder="enter password">
+            </div>
+            <div>
+                <label for="password-confirm">Confirm password : </label>
+                <input type="password" name="password-confirm" placeholder="confirm password">
+            </div>
+            <div>
+                <input type="submit" name="submit" value="submit" class="btn">
+                <input type="reset" name="reset" value="reset" class="btn">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
