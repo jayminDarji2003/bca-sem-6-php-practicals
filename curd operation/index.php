@@ -39,10 +39,92 @@
         $send_data = mysqli_query($dbCon,$add_data);
 
         if($send_data){
-            echo "Data sent successfully";
+           // echo "Data sent successfully";
         }
         else{
             echo "Error sending data";
         }
     }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product page</title>
+    <style>
+        body {
+            background-color: rgb(186, 177, 177);
+        }
+
+        .add-btn {
+            background-color: blueviolet;
+            color: wheat;
+            font-weight: bold;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <center>
+            All Products
+        </center>
+    </h1>
+    <div>
+        <a href="addProduct.html" class="add-btn">+ Add product</a>
+    </div>
+
+
+    <!-- show data here  -->
+    <?php
+        $fetch_data = "select * from product";
+        $qry = mysqli_query($dbCon,$fetch_data);
+        $no_of_data_fetched = mysqli_num_rows($qry);
+
+        echo " <h3>Total Products : $no_of_data_fetched</h3><br>";
+
+        // if($no_of_data_fetched > 0){
+        //     while($row = mysqli_fetch_assoc($qry)){
+        //         echo $row['p_id']. " ";
+        //         echo $row['p_name']. " ";
+        //         echo $row['p_price']. " ";
+        //         echo $row['p_desc']. " <br>";
+        //     }
+        // }
+            if($no_of_data_fetched > 0){
+                echo "<table border='1'>";
+                echo "<tr><th>ID</th><th>Name</th><th>Price</th><th>Description</th></tr>";
+                while($row = mysqli_fetch_assoc($qry)){
+                    echo "<tr>";
+                    echo "<td>".$row['p_id']."</td>";
+                    echo "<td>".$row['p_name']."</td>";
+                    echo "<td>".$row['p_price']."</td>";
+                    echo "<td>".$row['p_desc']."</td>";
+                    echo "<td> 
+                            <button>
+                            <a href='edit.html'>
+                            Edit
+                            </a>
+                            </button>
+                        </td>";
+                    echo "<td> 
+                            <button>Delete</button>
+                        </td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "No results found";
+            }
+    ?>
+
+
+</body>
+
+</html>
